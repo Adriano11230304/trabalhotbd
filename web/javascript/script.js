@@ -13,3 +13,9 @@ function mostrarpassword(){
         password.type = 'password';
     }
 }
+
+async function teste(){
+    let teste = await fetch('teste.jsp');
+    console.log(teste);
+}
+    

@@ -1,10 +1,11 @@
 <%-- 
     Document   : index
-    Created on : 21 de mar. de 2023, 16:07:41
+    Created on : 21 de mar. de 2023, 12:23:22
     Author     : ppgant
 --%>
 <%@ page language="Java" import="model.Usuario"%>
 <%@ page language="Java" import="model.Connection"%>
+<%@ page language="Java" import="model.Setor"%>
 <%@ page language="Java" import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,31 +25,23 @@
         </div>
         <div class="container-fluid">
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="card box-shadow col-md-4 mt-4">
-            <a href="cliente.jsp">
-            <img class="card-img-top" src="img/atendimento.jpeg" title="Gerar um novo atendimento">
-            <div class="card-body">
-                <div class="h4 text-dark text-center">
-                     Deseja gerar um novo atendimento?
-                </div>
+        <div class="col-md-4"></div>
+        <form class="py-3 col-4 mt-3 border" action="autenticate.jsp" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Escreva o seu e-mail" onkeyup="teste()" required>
             </div>
-            </a>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="card box-shadow col-md-4 mt-4">
-            <a href="login.jsp">
-            <img class="card-img-top" src="img/funcionario.jpg" title="Gerar um novo atendimento">
-            <div class="card-body">
-                <div class="h4 text-dark text-center">
-                     Área Funcionário
-                </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Escreva sua senha" required>
             </div>
-            </a>
-        </div>
-        <div class="col-md-4 mt-2">
-            
-        </div>
+            <div class="form-group">
+                <input type="checkbox" name="inputpassword" id="inputpassword" onclick="mostrarpassword()">
+                <label>Mostrar Senha</label>
+            </div>
+            <button class="btn btn-outline-dark" type="submit">Entrar</button>
+
+        </form>
         
     </div>
             <%
@@ -70,4 +63,3 @@
         
     </body>
 </html>
-

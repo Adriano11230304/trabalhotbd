@@ -1,9 +1,8 @@
-package model;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,46 +12,48 @@ import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import model.Connection;
+import model.Usuario;
 
 /**
  *
  * @author ppgant
  */
 @Entity
-@Table(name = "usuario")
-public class Usuario implements Serializable {
+@Table(name = "setor")
+public class Setor implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     private String nome;
     @Column
-    private String senha;
+    private String descricao;
     @Column
     private String codigo;
-    @Column
-    private String email;
-    @ManyToOne
-    @JoinColumn(name = "setor_id")
-    private Setor setor;
+    @OneToMany
+    private List<Usuario> usuarios;
 
-    public Setor getSetor() {
-        return setor;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public void setSetor(Setor setor) {
-        this.setor = setor;
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
-    
-    
-    
 
     public int getId() {
         return id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public void setId(int id) {
@@ -67,14 +68,6 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getCodigo() {
         return codigo;
     }
@@ -82,21 +75,21 @@ public class Usuario implements Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
     
-    public Usuario getUser(String email, String senha){
+    public List<Setor> listAll(){
         Connection con = new Connection();
         EntityManager em = con.openConnection();
-        Usuario user = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email and u.senha = :senha", Usuario.class).setParameter("email", email).setParameter("senha", senha).getSingleResult();
+        List<Setor> list = em.createQuery("SELECT s FROM Setor s", Setor.class).getResultList();
         
-        return user;
+        return list;
+    }
+    
+    public Setor queryName(String nome){
+        Connection con = new Connection();
+        EntityManager em = con.openConnection();
+        Setor s = em.createQuery("SELECT s FROM Setor s WHERE s.nome = :nome", Setor.class).setParameter("nome", nome).getSingleResult();
+        
+        return s;
     }
     
     public void create(){
@@ -105,13 +98,4 @@ public class Usuario implements Serializable {
         em.persist(this);
         con.closeConnection(em);
     }
-    
-    public List<Usuario> listAll(){
-        Connection con = new Connection();
-        EntityManager em = con.openConnection();
-        List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
-        
-        return list;
-    }
-    
 }
