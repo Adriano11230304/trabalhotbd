@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="javascript/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous" async></script>
 <jsp:include page = "header.jsp" />
     <%
             String email = (String) session.getAttribute("email");
@@ -25,7 +26,7 @@
                 <form class="py-3 col-6 m-3 border" action="" method="post">
                     <div class="form-group">
                         <label>Nome do paciente</label>
-                        <input type="text" class="form-control" name="nomepaciente" onkeyup="teste()" placeholder="Escreva o nome do paciente" required>
+                        <input type="text" class="form-control" name="nomepaciente" id="nomepaciente" placeholder="Escreva o nome do paciente" required>
                     </div>
                     <div class="form-group">
                         <label>E-mail do paciente</label>

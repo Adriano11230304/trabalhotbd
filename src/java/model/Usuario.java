@@ -15,8 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import model.Connection;
+import model.Atendimento;
 
 /**
  *
@@ -39,9 +41,19 @@ public class Usuario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "setor_id")
     private Setor setor;
+    @OneToMany
+    private List<Atendimento> atendimentos;
 
     public Setor getSetor() {
         return setor;
+    }
+
+    public List<Atendimento> getAtendimentos() {
+        return atendimentos;
+    }
+
+    public void setAtendimentos(List<Atendimento> atendimentos) {
+        this.atendimentos = atendimentos;
     }
 
     public void setSetor(Setor setor) {

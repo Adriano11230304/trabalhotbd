@@ -10,6 +10,7 @@
 <%@ page language="Java" import="model.Connection"%>
 <%@ page language="Java" import="java.util.List"%>
 <%@ page language="Java" import="model.Setor"%>
+<%@ page language="Java" import="model.Atendimento"%>
     <%
         try{
             String email = (String) session.getAttribute("email");
@@ -25,6 +26,14 @@
                 }
             
             }
+        }catch(Exception e){
+            out.println(e);
+        }
+        
+        try{
+            Atendimento a = new Atendimento();
+            List<Atendimento> list = a.listAll();
+            out.println(list.get(0).getNomepaciente());
         }catch(Exception e){
             out.println(e);
         }

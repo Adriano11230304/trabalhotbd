@@ -7,4 +7,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page language="Java" import="model.Connection"%>
 <%@ page language="Java" import="model.Setor"%>
-        <%="teste"%>
+<%@ page language="Java" import="java.util.List"%>
+            <%="dcdscsc"%>

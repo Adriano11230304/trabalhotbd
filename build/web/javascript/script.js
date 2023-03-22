@@ -15,7 +15,15 @@ function mostrarpassword(){
 }
 
 async function teste(){
-    let teste = await fetch('teste.jsp');
-    console.log(teste);
+    
+    $.ajax({
+        url: "teste.jsp",
+        type: "post",
+        data: $('#nomepaciente').serialize(),
+        dataType: "html",
+        success: function(result){
+            console.log(result);
+        }
+    });
 }
     
