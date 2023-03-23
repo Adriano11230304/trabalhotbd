@@ -1,6 +1,6 @@
 <%-- 
-    Document   : atendimentos
-    Created on : 21 de mar. de 2023, 14:55:07
+    Document   : usuarios
+    Created on : 23 de mar. de 2023, 17:55:00
     Author     : ppgant
 --%>
 
@@ -35,44 +35,44 @@
         
         %>
             <div class="container">
-            <h4 class="m-2">Seus Atendimentos - Para verificar observações e diagnóstico visualize o atendimento</h4>
+            <h4 class="m-2">Usuários</h4>
             </div>
             <div class="container">
-                <a class="btn btn-outline-dark" href="novoatendimento.jsp">Adicionar um novo atendimento</a>
+                <button class="btn btn-outline-dark">Adicionar um novo usuário</button>
             </div>
             <div id="loading">Carregando...</div>
             <div class="container fluid" id="table">
                 <table class="table table-borderless table-hover mt-3">
                     <thead class="thead-dark text-md-center">
                         <tr>
-                            <th scope="col">Nome do Paciente</th>
+                            <th scope="col">Nome</th>
                             <th scope="col">Código</th>
-                            <th scope="col">Data de criação</th>
-                            <th scope="col">Situação</th>
+                            <th scope="col">Setor</th>
+                            <th scope="col">E-mail</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody class="text-md-center">
                         <%
-                            Atendimento a = new Atendimento();
-                            List<Atendimento> list = a.listAll();
+                            Usuario u = new Usuario();
+                            List<Usuario> list = u.listAll();
                             
                             
                             for(int i = 0; i < list.size(); i++){
                                 out.println("<tr>");
-                                out.println("<td>"+list.get(i).getNomepaciente()+"</td>");
+                                out.println("<td>"+list.get(i).getNome()+"</td>");
                                 out.println("<td>"+list.get(i).getCodigo()+"</td>");
-                                out.println("<td>"+list.get(i).getData()+"</td>");                                
-                                out.println("<td>"+list.get(i).getSituacao()+"</td>");
+                                out.println("<td>"+list.get(i).getSetor().getNome()+"</td>");
+                                out.println("<td>"+list.get(i).getEmail()+"</td>");   
                                 out.println("<td>");
                                 out.println("<a class='btn btn-outline-dark' href=''>");
-                                out.println("<img src='img/excluir.png' title='excluir atendimento' width='20px' height='20px'>");
+                                out.println("<img src='img/excluir.png' title='excluir setor' width='20px' height='20px'>");
                                 out.println("</a>");
                                 out.println("<a class='btn btn-outline-dark' href=''>");
-                                out.println("<img src='img/editar.png' title='editar atendimento' width='20px' height='20px'>");
+                                out.println("<img src='img/editar.png' title='editar setor' width='20px' height='20px'>");
                                 out.println("</a>");
                                 out.println("<a class='btn btn-outline-dark' href=''>");
-                                out.println("<img src='img/informacao.png' title='detalhar atendimento' width='20px' height='20px'>");
+                                out.println("<img src='img/informacao.png' title='detalhar setor' width='20px' height='20px'>");
                                 out.println("</a>");
                                 out.println("</td>");
                                 out.println("</tr>");

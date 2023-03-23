@@ -1,6 +1,6 @@
 <%-- 
-    Document   : atendimentos
-    Created on : 21 de mar. de 2023, 14:55:07
+    Document   : todosAtendimentos
+    Created on : 23 de mar. de 2023, 17:35:02
     Author     : ppgant
 --%>
 
@@ -35,7 +35,7 @@
         
         %>
             <div class="container">
-            <h4 class="m-2">Seus Atendimentos - Para verificar observações e diagnóstico visualize o atendimento</h4>
+            <h4 class="m-2">Todos Atendimentos - Para verificar observações e diagnóstico visualize o atendimento</h4>
             </div>
             <div class="container">
                 <a class="btn btn-outline-dark" href="novoatendimento.jsp">Adicionar um novo atendimento</a>
@@ -49,6 +49,7 @@
                             <th scope="col">Código</th>
                             <th scope="col">Data de criação</th>
                             <th scope="col">Situação</th>
+                            <th scope="col">Funcionário</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -62,16 +63,17 @@
                                 out.println("<tr>");
                                 out.println("<td>"+list.get(i).getNomepaciente()+"</td>");
                                 out.println("<td>"+list.get(i).getCodigo()+"</td>");
-                                out.println("<td>"+list.get(i).getData()+"</td>");                                
+                                out.println("<td>"+list.get(i).getData()+"</td>");   
+                                out.println("<td>"+list.get(i).getUsuario().getNome()+"</td>");   
                                 out.println("<td>"+list.get(i).getSituacao()+"</td>");
-                                out.println("<td>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
+                                out.println("<td>"); 
+                                out.println("<a class='btn btn-outline-dark' href='atendimentosController.jsp?funcao=excluir&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='img/excluir.png' title='excluir atendimento' width='20px' height='20px'>");
                                 out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
+                                out.println("<a class='btn btn-outline-dark' href='atendimentosController.jsp?funcao=editar&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='img/editar.png' title='editar atendimento' width='20px' height='20px'>");
                                 out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
+                                out.println("<a class='btn btn-outline-dark' href='atendimentosController.jsp?funcao=detalhar&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='img/informacao.png' title='detalhar atendimento' width='20px' height='20px'>");
                                 out.println("</a>");
                                 out.println("</td>");
@@ -88,3 +90,4 @@
     </div>
     </body>
 </html>
+

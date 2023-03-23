@@ -33,6 +33,8 @@ public class Atendimento implements Serializable {
     @Column
     private String nomepaciente;
     @Column
+    private String email;
+    @Column
     private String data;
     @Column
     private String codigo;
@@ -109,6 +111,14 @@ public class Atendimento implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
     public List<Atendimento> listAll(){
         Connection con = new Connection();
@@ -116,5 +126,12 @@ public class Atendimento implements Serializable {
         List<Atendimento> list = em.createQuery("SELECT a FROM Atendimento a", Atendimento.class).getResultList();
         
         return list;
+    }
+    
+    public void create(){
+        Connection con = new Connection();
+        EntityManager em = con.openConnection();
+        em.persist(this);
+        con.closeConnection(em);
     }
 }

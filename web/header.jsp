@@ -30,19 +30,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <a class="nav-link text-light" href="novoatendimento.jsp">Novo atendimento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="">Seus atendimentos</a>
+                            <a class="nav-link text-light" href="atendimentos.jsp">Seus atendimentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="">Todos atendimentos</a>
+                            <a class="nav-link text-light" href="todosAtendimentos.jsp">Todos atendimentos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="">Atendimentos do setor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="">Setores</a>
+                            <a class="nav-link text-light" href="setores.jsp">Setores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="">Usuários</a>
+                            <a class="nav-link text-light" href="usuarios.jsp">Usuários</a>
                         </li>
                     </ul>
                 </div>
