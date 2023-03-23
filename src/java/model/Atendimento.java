@@ -40,9 +40,19 @@ public class Atendimento implements Serializable {
     private String observacoes;
     @Column
     private String diagnostico;
+    @Column
+    private String situacao;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
 
     public int getId() {
         return id;
