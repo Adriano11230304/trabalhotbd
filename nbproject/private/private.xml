@@ -7,12 +7,8 @@
             <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/src/java/model/Usuario.java</file>
             <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/novoatendimento.jsp</file>
             <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/atendimentos.jsp</file>
-            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/index.jsp</file>
-            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/logout.jsp</file>
-            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/teste.jsp</file>
-            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/src/java/model/Setor.java</file>
-            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/javascript/script.js</file>
-            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/WEB-INF/classes/META-INF/persistence.xml</file>
+            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/todosAtendimentos.jsp</file>
+            <file>file:/home/ppgant/NetBeansProjects/trabalhotdb1/web/atendimentosController.jsp</file>
         </group>
     </open-files>
 </project-private>

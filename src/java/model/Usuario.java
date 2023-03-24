@@ -103,7 +103,7 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
     
-    public Usuario getUser(String email, String senha){
+    public static Usuario getUser(String email, String senha){
         Connection con = new Connection();
         EntityManager em = con.openConnection();
         Usuario user = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email and u.senha = :senha", Usuario.class).setParameter("email", email).setParameter("senha", senha).getSingleResult();
@@ -118,12 +118,26 @@ public class Usuario implements Serializable {
         con.closeConnection(em);
     }
     
-    public List<Usuario> listAll(){
+    public static List<Usuario> listAll(){
         Connection con = new Connection();
         EntityManager em = con.openConnection();
         List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
         
         return list;
+    }
+    
+    public static Usuario getById(int id){
+        EntityManager em = Connection.openConnection();
+        Usuario usuario = em.createQuery("SELECT u FROM Usuario u WHERE u.id = :id", Usuario.class).setParameter("id", id).getSingleResult();
+        Connection.closeConnection(em);
+        
+        return usuario;
+    }
+    
+    public static void delete(int id){
+        EntityManager em = Connection.openConnection();
+        int usuario = em.createQuery("DELETE FROM Usuario u WHERE u.id = :id", Usuario.class).setParameter("id", id).executeUpdate();
+        Connection.closeConnection(em);
     }
     
 }

@@ -14,13 +14,13 @@ import javax.persistence.Persistence;
  */
 public class Connection {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("trabalhotdb1PU");
-    public EntityManager openConnection(){
+    public static EntityManager openConnection(){
          EntityManager em = entityManagerFactory.createEntityManager();
          em.getTransaction().begin();
          return em;
     }
     
-    public void closeConnection(EntityManager em){
+    public static void closeConnection(EntityManager em){
          em.getTransaction().commit();
     }
     

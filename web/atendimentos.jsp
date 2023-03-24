@@ -9,6 +9,7 @@
 <%@ page language="Java" import="model.Usuario"%>
 <%@ page language="Java" import="model.Connection"%>
 <%@ page language="Java" import="java.util.List"%>
+<%@ page language="Java" import="java.util.ArrayList"%>
 <%@ page language="Java" import="model.Setor"%>
 <%@ page language="Java" import="model.Atendimento"%>
         
@@ -42,48 +43,60 @@
             </div>
             <div id="loading">Carregando...</div>
             <div class="container fluid" id="table">
-                <table class="table table-borderless table-hover mt-3">
-                    <thead class="thead-dark text-md-center">
-                        <tr>
-                            <th scope="col">Nome do Paciente</th>
-                            <th scope="col">Código</th>
-                            <th scope="col">Data de criação</th>
-                            <th scope="col">Situação</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-md-center">
                         <%
-                            Atendimento a = new Atendimento();
-                            List<Atendimento> list = a.listAll();
+                            try{
+                            String email = (String) session.getAttribute("email");
+                            String senha = (String) session.getAttribute("senha");
+                           
+                            Usuario user = Usuario.getUser(email, senha);
+                            List<Atendimento> list = Atendimento.listAllUser(user);
                             
-                            
-                            for(int i = 0; i < list.size(); i++){
-                                out.println("<tr>");
-                                out.println("<td>"+list.get(i).getNomepaciente()+"</td>");
-                                out.println("<td>"+list.get(i).getCodigo()+"</td>");
-                                out.println("<td>"+list.get(i).getData()+"</td>");                                
-                                out.println("<td>"+list.get(i).getSituacao()+"</td>");
-                                out.println("<td>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
-                                out.println("<img src='img/excluir.png' title='excluir atendimento' width='20px' height='20px'>");
-                                out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
-                                out.println("<img src='img/editar.png' title='editar atendimento' width='20px' height='20px'>");
-                                out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
-                                out.println("<img src='img/informacao.png' title='detalhar atendimento' width='20px' height='20px'>");
-                                out.println("</a>");
-                                out.println("</td>");
-                                out.println("</tr>");
-                            }
+                            if(list.size() > 0){
                             
                         %>
+                            
+                           <table class="table table-borderless table-hover mt-3">
+                                <thead class="thead-dark text-md-center">
+                                   <tr>
+                                       <th scope="col">Nome do Paciente</th>
+                                       <th scope="col">Código</th>
+                                       <th scope="col">Data de criação</th>
+                                       <th scope="col">Situação</th>
+                                       <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-md-center">
+                        <%for(int i = 0; i < list.size(); i++){
+                                    out.println("<tr>");
+                                    out.println("<td>"+list.get(i).getNomepaciente()+"</td>");
+                                    out.println("<td>"+list.get(i).getCodigo()+"</td>");
+                                    out.println("<td>"+list.get(i).getData()+"</td>");    
+                                    out.println("<td>"+list.get(i).getSituacao()+"</td>");  
+                                    out.println("<td>");
+                                    out.println("<a class='btn btn-outline-dark' href='atendimentosController.jsp?funcao=excluir&id="+list.get(i).getId()+"'>");
+                                    out.println("<img src='img/excluir.png' title='excluir atendimento' width='20px' height='20px'>");
+                                    out.println("</a>");
+                                    out.println("<a class='btn btn-outline-dark' href='atendimentosController.jsp?funcao=editar&id="+list.get(i).getId()+"'>");
+                                    out.println("<img src='img/editar.png' title='editar atendimento' width='20px' height='20px'>");
+                                    out.println("</a>");
+                                    out.println("<a class='btn btn-outline-dark' href='atendimentosController.jsp?funcao=detalhar&id="+list.get(i).getId()+"'>");
+                                    out.println("<img src='img/informacao.png' title='detalhar atendimento' width='20px' height='20px'>");
+                                    out.println("</a>");
+                                    out.println("</td>");
+                                    out.println("</tr>");
+                        }
+                        }else{%>
+                            <h4 class='m-2' align='center'>Nenhum atendimento encontrado!</h4>
+                        <%}%>
                     </tbody>
                 </table>
             </div>
+                    <%
+                            }catch(Exception e){
+                                out.println(e);
+                            }%>
         </div>
-        
+                        
     </div>
     </div>
     </body>

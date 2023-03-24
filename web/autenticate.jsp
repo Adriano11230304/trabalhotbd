@@ -17,11 +17,10 @@
     <body>
         <%
             try{
-                Usuario user = new Usuario();
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 
-                Usuario userFound = user.getUser(email, password);
+                Usuario userFound = Usuario.getUser(email, password);
             
                
                 session.setAttribute("msg", "Login realizado com sucesso!");

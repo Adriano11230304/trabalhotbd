@@ -38,7 +38,7 @@
             <h4 class="m-2">Usuários</h4>
             </div>
             <div class="container">
-                <button class="btn btn-outline-dark">Adicionar um novo usuário</button>
+                <a class="btn btn-outline-dark" href="novoUsuario.jsp">Adicionar um novo usuário</a>
             </div>
             <div id="loading">Carregando...</div>
             <div class="container fluid" id="table">
@@ -54,8 +54,7 @@
                     </thead>
                     <tbody class="text-md-center">
                         <%
-                            Usuario u = new Usuario();
-                            List<Usuario> list = u.listAll();
+                            List<Usuario> list = Usuario.listAll();
                             
                             
                             for(int i = 0; i < list.size(); i++){
@@ -65,13 +64,13 @@
                                 out.println("<td>"+list.get(i).getSetor().getNome()+"</td>");
                                 out.println("<td>"+list.get(i).getEmail()+"</td>");   
                                 out.println("<td>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
+                                out.println("<a class='btn btn-outline-dark' href='usuariosController.jsp?funcao=excluir&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='img/excluir.png' title='excluir setor' width='20px' height='20px'>");
                                 out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
+                                out.println("<a class='btn btn-outline-dark' href='usuariosController.jsp?funcao=editar&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='img/editar.png' title='editar setor' width='20px' height='20px'>");
                                 out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href=''>");
+                                out.println("<a class='btn btn-outline-dark' href='usuariosController.jsp?funcao=detalhar&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='img/informacao.png' title='detalhar setor' width='20px' height='20px'>");
                                 out.println("</a>");
                                 out.println("</td>");

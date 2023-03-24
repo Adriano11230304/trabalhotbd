@@ -76,7 +76,7 @@ public class Setor implements Serializable {
         this.codigo = codigo;
     }
     
-    public List<Setor> listAll(){
+    public static List<Setor> listAll(){
         Connection con = new Connection();
         EntityManager em = con.openConnection();
         List<Setor> list = em.createQuery("SELECT s FROM Setor s", Setor.class).getResultList();
@@ -84,7 +84,7 @@ public class Setor implements Serializable {
         return list;
     }
     
-    public Setor queryName(String nome){
+    public static Setor queryName(String nome){
         Connection con = new Connection();
         EntityManager em = con.openConnection();
         Setor s = em.createQuery("SELECT s FROM Setor s WHERE s.nome = :nome", Setor.class).setParameter("nome", nome).getSingleResult();
@@ -97,5 +97,19 @@ public class Setor implements Serializable {
         EntityManager em = con.openConnection();
         em.persist(this);
         con.closeConnection(em);
+    }
+    
+    public static void delete(int id){
+        EntityManager em = Connection.openConnection();
+        int setor = em.createQuery("DELETE FROM Setor s WHERE s.id = :id", Setor.class).setParameter("id", id).executeUpdate();
+        Connection.closeConnection(em);
+    }
+    
+    public static Setor getById(int id){
+        EntityManager em = Connection.openConnection();
+        Setor setor = em.createQuery("SELECT s FROM Setor s WHERE s.id = :id", Setor.class).setParameter("id", id).getSingleResult();
+        Connection.closeConnection(em);
+        
+        return setor;
     }
 }

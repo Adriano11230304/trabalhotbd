@@ -5,6 +5,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -120,18 +121,46 @@ public class Atendimento implements Serializable {
         this.email = email;
     }
     
-    public List<Atendimento> listAll(){
-        Connection con = new Connection();
-        EntityManager em = con.openConnection();
+    public static Atendimento getById(int id){
+        EntityManager em = Connection.openConnection();
+        Atendimento atendimento = em.createQuery("SELECT a FROM Atendimento a WHERE a.id = :id", Atendimento.class).setParameter("id", id).getSingleResult();
+        Connection.closeConnection(em);
+        
+        return atendimento;
+    }
+    
+    public static List<Atendimento> listAll(){
+        EntityManager em = Connection.openConnection();
         List<Atendimento> list = em.createQuery("SELECT a FROM Atendimento a", Atendimento.class).getResultList();
+        Connection.closeConnection(em);
         
         return list;
     }
     
+    public static List<Atendimento> listAllUser(Usuario user){
+        EntityManager em = Connection.openConnection();
+        List<Atendimento> list = em.createQuery("SELECT a FROM Atendimento a", Atendimento.class).getResultList();
+        List<Atendimento> atendimentos = new ArrayList<Atendimento>();
+       
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getUsuario().getId() == user.getId()){
+                atendimentos.add(list.get(i));
+            }
+        }
+        Connection.closeConnection(em);
+        
+        return atendimentos;
+    }
+    
     public void create(){
-        Connection con = new Connection();
-        EntityManager em = con.openConnection();
+        EntityManager em = Connection.openConnection();
         em.persist(this);
-        con.closeConnection(em);
+        Connection.closeConnection(em);
+    }
+    
+    public static void delete(int id){
+        EntityManager em = Connection.openConnection();
+        int atendimento = em.createQuery("DELETE FROM Atendimento a WHERE a.id = :id", Atendimento.class).setParameter("id", id).executeUpdate();
+        Connection.closeConnection(em);
     }
 }
