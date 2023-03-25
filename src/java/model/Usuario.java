@@ -104,23 +104,22 @@ public class Usuario implements Serializable {
     }
     
     public static Usuario getUser(String email, String senha){
-        Connection con = new Connection();
-        EntityManager em = con.openConnection();
+        EntityManager em = Connection.openConnection();
         Usuario user = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email and u.senha = :senha", Usuario.class).setParameter("email", email).setParameter("senha", senha).getSingleResult();
         
         return user;
     }
     
     public void create(){
-        Connection con = new Connection();
-        EntityManager em = con.openConnection();
+        
+        EntityManager em = Connection.openConnection();
         em.persist(this);
-        con.closeConnection(em);
+        Connection.closeConnection(em);
     }
     
     public static List<Usuario> listAll(){
-        Connection con = new Connection();
-        EntityManager em = con.openConnection();
+        
+        EntityManager em = Connection.openConnection();
         List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
         
         return list;

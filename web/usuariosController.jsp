@@ -29,6 +29,7 @@
             if(request.getParameter("funcao").equals("add")){
                 Usuario useradd = new Usuario();
                 useradd.setNome(request.getParameter("nome"));
+                useradd.setSenha(request.getParameter("senha"));
                 useradd.setEmail(request.getParameter("email"));
                 useradd.setCodigo(request.getParameter("codigo"));
                 Setor s = Setor.getById(Integer.parseInt(request.getParameter("setor")));
@@ -42,9 +43,17 @@
             
             if(request.getParameter("funcao").equals("excluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
-                Usuario.delete(id);
-                session.setAttribute("msg", "Usuário excluído com sucesso!");
-                response.sendRedirect("usuarios.jsp");
+                Usuario userdelete = Usuario.getById(id);
+                if(userdelete.getId() == user.getId()){
+                    session.setAttribute("msg", "Você não pode excluir o seu Usuário!");
+                    response.sendRedirect("usuarios.jsp");
+                }else{
+                    Usuario.delete(id);
+                    session.setAttribute("msg", "Usuário excluído com sucesso!");
+                    response.sendRedirect("usuarios.jsp");
+                }
+                    
+                
             }
     
             if(request.getParameter("funcao").equals("editar")){

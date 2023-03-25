@@ -34,13 +34,11 @@
                     </div>
                     <div class="form-group">
                         <label>Código do Setor</label>
-                        <input type="text" class="form-control" maxlength="6" minlength="6" name="codigo" placeholder="Escreva o codigo do setor">
+                        <input type="text" class="form-control" maxlength="6" minlength="6" name="codigo" placeholder="Escreva o codigo do setor" required>
                     </div>
                      <div class="form-group">
                         <label>Descrição</label>
-                        <textarea class="form-control" name="descricao" id="descricao">
-                            
-                        </textarea>
+                        <textarea class="form-control" name="descricao" id="descricao" required></textarea>
                     </div>
                     
                     <button class="btn btn-outline-dark" type="submit">Gerar novo setor</button>

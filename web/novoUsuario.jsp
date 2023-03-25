@@ -36,12 +36,20 @@
                         <input type="text" class="form-control" name="nome" id="nome" placeholder="Escreva o nome" required>
                     </div>
                     <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" name="senha" id="password" placeholder="Escreva a senha" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="inputpassword" id="inputpassword" onclick="mostrarpassword()">
+                        <label>Mostrar Senha</label>
+                    </div>
+                    <div class="form-group">
                         <label>E-mail do usuário</label>
-                        <input type="email" class="form-control" name="email" placeholder="Escreva o email do usuário">
+                        <input type="email" class="form-control" name="email" placeholder="Escreva o email do usuário" required>
                     </div>
                     <div class="form-group">
                         <label>Código do Usuário</label>
-                        <input type="text" class="form-control" maxlength="6" minlength="6" name="codigo" placeholder="Escreva o codigo do usuario">
+                        <input type="text" class="form-control" maxlength="6" minlength="6" name="codigo" placeholder="Escreva o codigo do usuario" required>
                     </div>
                     <div class="form-group">
                         <label>Setor</label>

@@ -51,8 +51,8 @@
                                     <th scope="col">Nome do Paciente</th>
                                     <th scope="col">Código</th>
                                     <th scope="col">Data de criação</th>
-                                    <th scope="col">Situação</th>
                                     <th scope="col">Funcionário</th>
+                                    <th scope="col">Situação</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
