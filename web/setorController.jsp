@@ -46,7 +46,17 @@
             }
     
             if(request.getParameter("funcao").equals("editar")){
-                out.println("<script>console.log('entrou');</script>");
+                String id = "editarSetor.jsp?id="+request.getParameter("id");
+                response.sendRedirect(id);
+            }
+            
+            if(request.getParameter("funcao").equals("alterar")){
+                int id = Integer.parseInt(request.getParameter("id"));
+                Setor s = Setor.getById(id);
+                setor.setNome(request.getParameter("nome"));
+                setor.setDescricao(request.getParameter("descricao"));
+                setor.setCodigo(request.getParameter("codigo"));
+                Setor.editar();
             }
             
         }catch(Exception e){
