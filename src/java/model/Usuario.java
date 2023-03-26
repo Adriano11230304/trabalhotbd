@@ -121,6 +121,7 @@ public class Usuario implements Serializable {
         
         EntityManager em = Connection.openConnection();
         List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
+        // List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).setFirstResult(1).setMaxResults(1).getResultList();
         
         return list;
     }
@@ -128,6 +129,7 @@ public class Usuario implements Serializable {
     public static Usuario getById(int id){
         EntityManager em = Connection.openConnection();
         Usuario usuario = em.createQuery("SELECT u FROM Usuario u WHERE u.id = :id", Usuario.class).setParameter("id", id).getSingleResult();
+        
         Connection.closeConnection(em);
         
         return usuario;

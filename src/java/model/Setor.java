@@ -115,7 +115,7 @@ public class Setor implements Serializable {
     
     public void editar(){
         EntityManager em = Connection.openConnection();
-        // Setor setor = em.createQuery("SELECT s FROM Setor s WHERE s.id = :id", Setor.class).setParameter("id", id).getSingleResult();
+        em.persist(this);
         Connection.closeConnection(em);
     }
 }

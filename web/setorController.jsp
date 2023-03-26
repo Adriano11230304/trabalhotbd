@@ -53,10 +53,13 @@
             if(request.getParameter("funcao").equals("alterar")){
                 int id = Integer.parseInt(request.getParameter("id"));
                 Setor s = Setor.getById(id);
-                setor.setNome(request.getParameter("nome"));
-                setor.setDescricao(request.getParameter("descricao"));
-                setor.setCodigo(request.getParameter("codigo"));
-                Setor.editar();
+                s.setNome(request.getParameter("nome"));
+                s.setDescricao(request.getParameter("descricao"));
+                s.setCodigo(request.getParameter("codigo"));
+                s.editar();
+                session.setAttribute("msg", "Setor editado com sucesso!");
+                response.sendRedirect("setores.jsp");
+                
             }
             
         }catch(Exception e){

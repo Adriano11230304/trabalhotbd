@@ -25,14 +25,14 @@
             }
             
             int id = Integer.parseInt(request.getParameter("id"));
-            Setor s = Setor.getById(1);
+            Setor s = Setor.getById(id);
      %>
             <div class="col-md-10">
                 <div class="container">
                     <h4 class="m-2">Novo Setor</h4>
                 </div>
                 <%
-                out.println("<form class='py-3 col-6 m-3 border' action='setorController.jsp?funcao=alterar?'"+s.getId()+"') method='post'>");
+                out.println("<form class='py-3 col-6 m-3 border' action='setorController.jsp?funcao=alterar&id="+s.getId()+"' method='post'>");
                 %>
                     <div class="form-group">
                         <label>Nome</label>
