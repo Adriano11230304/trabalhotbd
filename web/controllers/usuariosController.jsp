@@ -17,7 +17,7 @@
             Usuario user = Usuario.getUser(email, senha);
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -38,7 +38,7 @@
                 
                 useradd.create();
                 session.setAttribute("msg","Usuario adicionado com sucesso!");
-                response.sendRedirect("usuarios.jsp");
+                response.sendRedirect("../views/usuarios.jsp");
             }
             
             if(request.getParameter("funcao").equals("excluir")){
@@ -46,11 +46,11 @@
                 Usuario userdelete = Usuario.getById(id);
                 if(userdelete.getId() == user.getId()){
                     session.setAttribute("msg", "Você não pode excluir o seu Usuário!");
-                    response.sendRedirect("usuarios.jsp");
+                    response.sendRedirect("../views/usuarios.jsp");
                 }else{
                     Usuario.delete(id);
                     session.setAttribute("msg", "Usuário excluído com sucesso!");
-                    response.sendRedirect("usuarios.jsp");
+                    response.sendRedirect("../views/usuarios.jsp");
                 }
                     
                 

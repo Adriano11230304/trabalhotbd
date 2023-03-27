@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SUPAI</title>
-        <link rel="stylesheet" href="css/style.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css" crossorigin="anonymous">
     </head>
     <body>
         <div class="container-fluid">
@@ -19,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             </div>
             <div class="col-md-9 text-center mt-3 mb-2" style="font-size: 20px">SUPAI - Sistema da Unidade de Assistência Básica do IFRS</div>
             <div class="navbar-nav navbar-right mt-2 mb-2 ml-5">
-                <a class="btn btn-outline-light" href="logout.jsp"><img src="img/logout.png" width="30px" height="25px" title="Sair do sistema"></a>
+                <a class="btn btn-outline-light" href="logout.jsp"><img src="../img/logout.png" width="30px" height="25px" title="Sair do sistema"></a>
             </div>
         </div>
         <div class="row">

@@ -32,7 +32,7 @@
                     <h4 class="m-2">Novo Setor</h4>
                 </div>
                 <%
-                out.println("<form class='py-3 col-6 m-3 border' action='setorController.jsp?funcao=alterar&id="+s.getId()+"' method='post'>");
+                out.println("<form class='py-3 col-6 m-3 border' action='../controllers/setorController.jsp?funcao=alterar&id="+s.getId()+"' method='post'>");
                 %>
                     <div class="form-group">
                         <label>Nome</label>

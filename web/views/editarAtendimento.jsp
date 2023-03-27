@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cliente
-    Created on : 21 de mar. de 2023, 16:52:07
+    Document   : editarAtendimento
+    Created on : 27 de mar. de 2023, 14:59:05
     Author     : ppgant
 --%>
 
@@ -8,6 +8,7 @@
 <script src="javascript/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous" async></script>
 <jsp:include page = "header.jsp" />
+<%@ page language="Java" import="model.Atendimento"%>
     <%
             String email = (String) session.getAttribute("email");
             if(email == null){
@@ -27,10 +28,16 @@
                 <div class="container">
                     <h4 class="m-2">Novo Atendimento</h4>
                 </div>
-                <form class="py-3 col-6 m-3 border" action="atendimentosController.jsp?funcao=add" method="post">
+                <%
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    Atendimento a = Atendimento.getById(id);
+                out.println("<form class='py-3 col-6 m-3 border' action='../controllers/atendimentosController.jsp?funcao=alterar&id="+a.getId()+" method='post'>");
+                %>
                     <div class="form-group">
                         <label>Nome do paciente</label>
-                        <input type="text" class="form-control" name="nomepaciente" id="nomepaciente" placeholder="Escreva o nome do paciente" required>
+                        <%
+                        out.println("<input type='text' class='form-control' name='nomepaciente' id='nomepaciente' placeholder='Escreva o nome do paciente' value='"+a.getNomepaciente()+"' required>");
+                        %>
                     </div>
                     <div class="form-group">
                         <label>E-mail do paciente</label>
@@ -53,7 +60,7 @@
                         </textarea>
                     </div>
                     
-                    <button class="btn btn-outline-dark" type="submit">Gerar novo atendimento</button>
+                    <button class="btn btn-outline-dark" type="submit">Alterar atendimento</button>
 
                 </form>
             </div>

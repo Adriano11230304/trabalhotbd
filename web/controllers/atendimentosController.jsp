@@ -16,7 +16,7 @@
             Usuario user = Usuario.getUser(email, senha);
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../views/index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -32,15 +32,16 @@
                 if(user.getId() == a.getUsuario().getId()){
                     Atendimento.delete(id);
                     session.setAttribute("msg", "Atendimento excluído com sucesso!");
-                    response.sendRedirect("atendimentos.jsp");
+                    response.sendRedirect("../views/atendimentos.jsp");
                 }else{
                     session.setAttribute("msg", "Você não é o criador desse atendimento e, portanto, não poderá excluí-lo!");
-                    response.sendRedirect("todosAtendimentos.jsp");
+                    response.sendRedirect("../views/todosAtendimentos.jsp");
                 }
             }
     
             if(request.getParameter("funcao").equals("editar")){
-                out.println("<script>console.log('entrou');</script>");
+                String id = "../views/editarAtendimento.jsp?id="+request.getParameter("id");
+                response.sendRedirect(id);
             }
     
             if(request.getParameter("funcao").equals("add")){
@@ -56,7 +57,7 @@
                 a.setSituacao("pendente");
                 a.create();
                 session.setAttribute("msg", "Atendimento adicionado com sucesso!");
-                response.sendRedirect("atendimentos.jsp");
+                response.sendRedirect("../views/atendimentos.jsp");
             }
             
         }catch(Exception e){

@@ -30,7 +30,7 @@
                 <div class="container">
                     <h4 class="m-2">Novo Usuário</h4>
                 </div>
-                <form class="py-3 col-6 m-3 border" action="usuariosController.jsp?funcao=add" method="post">
+                <form class="py-3 col-6 m-3 border" action="../controllers/usuariosController.jsp?funcao=add" method="post">
                     <div class="form-group">
                         <label>Nome</label>
                         <input type="text" class="form-control" name="nome" id="nome" placeholder="Escreva o nome" required>

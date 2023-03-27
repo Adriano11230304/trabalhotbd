@@ -17,7 +17,7 @@
             Usuario user = Usuario.getUser(email, senha);
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -34,7 +34,7 @@
                 
                 setor.create();
                 session.setAttribute("msg","Setor adicionado com sucesso!");
-                response.sendRedirect("setores.jsp");
+                response.sendRedirect("../views/setores.jsp");
             }
             
             if(request.getParameter("funcao").equals("excluir")){
@@ -42,23 +42,22 @@
                 Setor s = Setor.getById(id);
                 Setor.delete(id);
                 session.setAttribute("msg", "Setor excluído com sucesso!");
-                response.sendRedirect("setores.jsp");
+                response.sendRedirect("../views/setores.jsp");
             }
     
             if(request.getParameter("funcao").equals("editar")){
-                String id = "editarSetor.jsp?id="+request.getParameter("id");
+                String id = "../views/editarSetor.jsp?id="+request.getParameter("id");
                 response.sendRedirect(id);
             }
             
             if(request.getParameter("funcao").equals("alterar")){
                 int id = Integer.parseInt(request.getParameter("id"));
-                Setor s = Setor.getById(id);
-                s.setNome(request.getParameter("nome"));
-                s.setDescricao(request.getParameter("descricao"));
-                s.setCodigo(request.getParameter("codigo"));
-                s.editar();
+                String nome = request.getParameter("nome");
+                String descricao = request.getParameter("descricao");
+                String codigo = request.getParameter("codigo");
+                Setor.editar(nome, codigo, descricao, id);
                 session.setAttribute("msg", "Setor editado com sucesso!");
-                response.sendRedirect("setores.jsp");
+                response.sendRedirect("../views/setores.jsp");
                 
             }
             

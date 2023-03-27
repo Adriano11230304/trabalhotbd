@@ -26,7 +26,7 @@
         <div class="container-fluid">
     <div class="row">
         <div class="col-md-4"></div>
-        <form class="py-3 col-4 mt-3 border" action="autenticate.jsp" method="post">
+        <form class="py-3 col-4 mt-3 border" action="views/autenticate.jsp" method="post">
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control" name="email" placeholder="Escreva o seu e-mail" onkeyup="teste()" required>

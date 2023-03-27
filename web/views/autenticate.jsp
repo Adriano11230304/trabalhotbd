@@ -30,7 +30,7 @@
                 
             }catch(Exception e){
                 session.setAttribute("msg", "Usuário ou senha incorretos!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }
             
         %>

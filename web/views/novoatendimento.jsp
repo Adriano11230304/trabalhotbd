@@ -27,7 +27,7 @@
                 <div class="container">
                     <h4 class="m-2">Novo Atendimento</h4>
                 </div>
-                <form class="py-3 col-6 m-3 border" action="atendimentosController.jsp?funcao=add" method="post">
+                <form class="py-3 col-6 m-3 border" action="../controllers/atendimentosController.jsp?funcao=add" method="post">
                     <div class="form-group">
                         <label>Nome do paciente</label>
                         <input type="text" class="form-control" name="nomepaciente" id="nomepaciente" placeholder="Escreva o nome do paciente" required>
