@@ -16,7 +16,7 @@
             Usuario user = Usuario.getUser(email, senha);
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("../views/index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -42,6 +42,20 @@
             if(request.getParameter("funcao").equals("editar")){
                 String id = "../views/editarAtendimento.jsp?id="+request.getParameter("id");
                 response.sendRedirect(id);
+            }
+            
+            if(request.getParameter("funcao").equals("alterar")){
+                int id = Integer.parseInt(request.getParameter("id"));
+                String nome = request.getParameter("nomepaciente");
+                String emailPaciente = request.getParameter("email");
+                String situacao = request.getParameter("situacao");
+                String codigo = request.getParameter("codigo");
+                String observacoes = request.getParameter("observacoes");
+                String diagnostico = request.getParameter("diagnostico");
+                Atendimento.editar(nome, codigo, observacoes, diagnostico, situacao, email, id);
+                
+                session.setAttribute("msg", "Atendimento editado com sucesso!");
+                response.sendRedirect("../views/atendimentos.jsp");
             }
     
             if(request.getParameter("funcao").equals("add")){

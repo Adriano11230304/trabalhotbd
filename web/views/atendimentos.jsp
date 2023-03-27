@@ -20,7 +20,7 @@
             String email = (String) session.getAttribute("email");
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){

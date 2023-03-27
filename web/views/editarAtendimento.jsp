@@ -13,7 +13,7 @@
             String email = (String) session.getAttribute("email");
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -26,39 +26,52 @@
      %>
             <div class="col-md-10">
                 <div class="container">
-                    <h4 class="m-2">Novo Atendimento</h4>
+                    <h4 class="m-2">Alterar Atendimento</h4>
                 </div>
                 <%
                     int id = Integer.parseInt(request.getParameter("id"));
                     Atendimento a = Atendimento.getById(id);
-                out.println("<form class='py-3 col-6 m-3 border' action='../controllers/atendimentosController.jsp?funcao=alterar&id="+a.getId()+" method='post'>");
+                out.println("<form class='py-3 col-6 m-3 border' action='../controllers/atendimentosController.jsp?funcao=alterar&id="+a.getId()+"' method='post'>");
                 %>
                     <div class="form-group">
                         <label>Nome do paciente</label>
                         <%
-                        out.println("<input type='text' class='form-control' name='nomepaciente' id='nomepaciente' placeholder='Escreva o nome do paciente' value='"+a.getNomepaciente()+"' required>");
+                        out.println("<input type='text' class='form-control' name='nomepaciente' id='nomepaciente' value='"+a.getNomepaciente()+"' required>");
                         %>
                     </div>
                     <div class="form-group">
                         <label>E-mail do paciente</label>
-                        <input type="email" class="form-control" name="email" placeholder="Escreva o email do paciente">
+                        <%
+                        out.println("<input type='email' class='form-control' name='email' id='email' value='"+a.getEmail()+"' required>");
+                        %>
                     </div>
                     <div class="form-group">
                         <label>Código do Atendimento</label>
-                        <input type="text" class="form-control" maxlength="6" minlength="6" name="codigo" placeholder="Escreva o codigo do atendimento">
+                        <%
+                        out.println("<input type='text' class='form-control' maxlength='6' minlength='6' name='codigo' value='"+a.getCodigo()+"' required>");
+                        %>
                     </div>
                      <div class="form-group">
                         <label>Observações</label>
-                        <textarea class="form-control" name="observacoes" id="observacoes">
-                            
-                        </textarea>
+                        <%
+                        out.println("<textarea class='form-control' name='observacoes' id='observacoes'>"+a.getObservacoes()+"</textarea>");
+                        %>    
                     </div>
                     <div class="form-group">
                         <label>Diagnóstico</label>
-                        <textarea class="form-control" name="diagnostico" id="diagnostico">
-                            
-                        </textarea>
+                        <%
+                        out.println("<textarea class='form-control' name='diagnostico' id='diagnostico'>"+a.getDiagnostico()+"</textarea>");
+                        %>
                     </div>
+                    <div class="form-group">
+                        <label>Situação</label>
+                        <select class="custom-select" name="situacao">
+                            <option value="pendente" selected>Pendente</option>
+                            <option value="concluido">Concluído</option>
+                        </select>
+                    </div>
+                    
+                    
                     
                     <button class="btn btn-outline-dark" type="submit">Alterar atendimento</button>
 

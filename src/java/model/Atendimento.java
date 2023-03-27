@@ -164,9 +164,9 @@ public class Atendimento implements Serializable {
         Connection.closeConnection(em);
     }
     
-    public static void editar(String nomepaciente, String data, String codigo, String observacoes, String diagnostico, String situacao, String email, int id){
+    public static void editar(String nomepaciente, String codigo, String observacoes, String diagnostico, String situacao, String email, int id){
         EntityManager em = Connection.openConnection();
-        int atendimento = em.createQuery("UPDATE Atendimento a SET a.nomepaciente = :nomepaciente, a.data = :codigo, a.codigo = :descricao, a.observacoes, a.diagnostico = :diagnostico, a.situacao = :situacao, a.email = :email WHERE a.id = :id", Atendimento.class).setParameter("nomepaciente", nomepaciente).setParameter("data", data).setParameter("codigo", codigo).setParameter("observacoes", observacoes).setParameter("diagnostico", diagnostico).setParameter("situacao", situacao).setParameter("email", email).setParameter("id", id).executeUpdate();
+        int atendimento = em.createQuery("UPDATE Atendimento a SET a.nomepaciente = :nomepaciente, a.codigo = :codigo, a.observacoes = :observacoes, a.diagnostico = :diagnostico, a.situacao = :situacao, a.email = :email WHERE a.id = :id", Atendimento.class).setParameter("nomepaciente", nomepaciente).setParameter("codigo", codigo).setParameter("observacoes", observacoes).setParameter("diagnostico", diagnostico).setParameter("situacao", situacao).setParameter("email", email).setParameter("id", id).executeUpdate();
         Connection.closeConnection(em);
     }
 }
