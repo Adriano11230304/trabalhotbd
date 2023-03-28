@@ -13,17 +13,4 @@ function mostrarpassword(){
         password.type = 'password';
     }
 }
-
-async function teste(){
-    
-    $.ajax({
-        url: "teste.jsp",
-        type: "post",
-        data: $('#nomepaciente').serialize(),
-        dataType: "html",
-        success: function(result){
-            console.log(result);
-        }
-    });
-}
     

@@ -12,7 +12,7 @@
             String email = (String) session.getAttribute("email");
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -39,6 +39,11 @@
                     <div class="form-group">
                         <label>Código do Atendimento</label>
                         <input type="text" class="form-control" maxlength="6" minlength="6" name="codigo" placeholder="Escreva o codigo do atendimento">
+                    </div>
+                    <div class="form-group">
+                        <label>Informe a data do atendimento:</label>
+                        <input type="date" class="form-control" id="data" name="data" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
+                        <input type="time" class="form-control" id="hora" name="hora" required>
                     </div>
                      <div class="form-group">
                         <label>Observações</label>

@@ -9,6 +9,7 @@
 <%@ page language="Java" import="model.Connection"%>
 <%@ page language="Java" import="model.Atendimento"%>
 <%@ page language="Java" import="model.Setor"%>
+<%@ page language="Java" import="java.util.List"%>
 
 <%
         try{
@@ -40,9 +41,17 @@
             if(request.getParameter("funcao").equals("excluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
                 Setor s = Setor.getById(id);
-                Setor.delete(id);
-                session.setAttribute("msg", "Setor excluído com sucesso!");
-                response.sendRedirect("../views/setores.jsp");
+                List<Usuario> list = Usuario.listUsersSetor(s);
+                if(list.size() > 0){
+                    session.setAttribute("msg", "Exclua primeiro os usuários desse setor para após excluir o Setor!");
+                    response.sendRedirect("../views/setores.jsp");
+                }else{
+                    Setor.delete(id);
+                    session.setAttribute("msg", "Setor excluído com sucesso!");
+                    response.sendRedirect("../views/setores.jsp");
+                }
+                
+                
             }
     
             if(request.getParameter("funcao").equals("editar")){

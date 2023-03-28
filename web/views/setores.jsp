@@ -68,9 +68,6 @@
                                 out.println("<a class='btn btn-outline-dark' href='../controllers/setorController.jsp?funcao=editar&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='../img/editar.png' title='editar setor' width='20px' height='20px'>");
                                 out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href='../controllers/setorController.jsp?funcao=detalhar&id="+list.get(i).getId()+"'>");
-                                out.println("<img src='../img/informacao.png' title='detalhar setor' width='20px' height='20px'>");
-                                out.println("</a>");
                                 out.println("</td>");
                                 out.println("</tr>");
                             }

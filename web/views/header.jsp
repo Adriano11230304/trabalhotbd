@@ -36,9 +36,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <a class="nav-link text-light" href="todosAtendimentos.jsp">Todos atendimentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="">Atendimentos do setor</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-light" href="setores.jsp">Setores</a>
                         </li>
                         <li class="nav-item">

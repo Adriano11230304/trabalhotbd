@@ -9,6 +9,7 @@
 <%@ page language="Java" import="model.Connection"%>
 <%@ page language="Java" import="model.Atendimento"%>
 <%@ page language="Java" import="model.Setor"%>
+<%@ page language="Java" import="java.util.List"%>
 
 <%
         try{
@@ -44,20 +45,41 @@
             if(request.getParameter("funcao").equals("excluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
                 Usuario userdelete = Usuario.getById(id);
+                List<Atendimento> list = Atendimento.listAllUser(userdelete);
                 if(userdelete.getId() == user.getId()){
                     session.setAttribute("msg", "Você não pode excluir o seu Usuário!");
                     response.sendRedirect("../views/usuarios.jsp");
                 }else{
-                    Usuario.delete(id);
-                    session.setAttribute("msg", "Usuário excluído com sucesso!");
-                    response.sendRedirect("../views/usuarios.jsp");
+                    if(list.size() > 0){
+                        session.setAttribute("msg", "Exclua os atendimentos desse usuário para depois excluir o usuário!");
+                        response.sendRedirect("../views/usuarios.jsp");
+                    }else{
+                        Usuario.delete(id);
+                        session.setAttribute("msg", "Usuário excluído com sucesso!");
+                        response.sendRedirect("../views/usuarios.jsp");
+                    }
+                    
                 }
                     
                 
             }
     
             if(request.getParameter("funcao").equals("editar")){
-                out.println("<script>console.log('entrou');</script>");
+                String id = "../views/editarUsuario.jsp?id="+request.getParameter("id");
+                response.sendRedirect(id);
+            }
+            
+            if(request.getParameter("funcao").equals("alterar")){
+                int id = Integer.parseInt(request.getParameter("id"));
+                String nome = request.getParameter("nome");
+                String senhaUser = request.getParameter("senha");
+                String emailUser = request.getParameter("email");
+                String codigo = request.getParameter("codigo");
+                int s = Integer.parseInt(request.getParameter("setor"));
+                Setor setor = Setor.getById(s);
+                Usuario.editar(nome, senhaUser, codigo, emailUser, setor,  id);
+                session.setAttribute("msg", "usuario editado com sucesso!");
+                response.sendRedirect("../views/usuarios.jsp");
             }
             
         }catch(Exception e){

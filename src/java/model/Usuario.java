@@ -121,7 +121,6 @@ public class Usuario implements Serializable {
         
         EntityManager em = Connection.openConnection();
         List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
-        // List<Usuario> list = em.createQuery("SELECT u FROM Usuario u", Usuario.class).setFirstResult(1).setMaxResults(1).getResultList();
         
         return list;
     }
@@ -139,6 +138,20 @@ public class Usuario implements Serializable {
         EntityManager em = Connection.openConnection();
         int usuario = em.createQuery("DELETE FROM Usuario u WHERE u.id = :id", Usuario.class).setParameter("id", id).executeUpdate();
         Connection.closeConnection(em);
+    }
+    
+    public static void editar(String nome, String senha, String codigo, String email, Setor setor, int id){
+        EntityManager em = Connection.openConnection();
+        int usuario = em.createQuery("UPDATE Usuario u SET u.nome = :nome, u.senha = :senha, u.codigo = :codigo, u.email = :email, u.setor = :setor WHERE u.id = :id", Setor.class).setParameter("nome", nome).setParameter("senha", senha).setParameter("codigo", codigo).setParameter("email", email).setParameter("setor", setor).setParameter("id", id).executeUpdate();
+        Connection.closeConnection(em);
+    }
+    
+    public static List<Usuario> listUsersSetor(Setor setor){
+        
+        EntityManager em = Connection.openConnection();
+        List<Usuario> list = em.createQuery("SELECT u FROM Usuario u WHERE u.setor = :setor", Usuario.class).setParameter("setor", setor).getResultList();
+        
+        return list;
     }
     
 }

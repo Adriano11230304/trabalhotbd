@@ -66,8 +66,15 @@
                     <div class="form-group">
                         <label>Situação</label>
                         <select class="custom-select" name="situacao">
-                            <option value="pendente" selected>Pendente</option>
-                            <option value="concluido">Concluído</option>
+                            <%if (a.getSituacao().equals("pendente")) {%>
+                                <option value="pendente" selected>Pendente</option>
+                                <option value="concluido">Concluído</option>
+                            <%}else{%>
+                                <option value="pendente">Pendente</option>
+                                <option value="concluido" selected>Concluído</option>
+                            <%}%>
+                            
+                            
                         </select>
                     </div>
                     

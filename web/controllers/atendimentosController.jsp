@@ -63,11 +63,11 @@
                 a.setNomepaciente(request.getParameter("nomepaciente"));
                 a.setEmail(request.getParameter("email"));
                 a.setCodigo(request.getParameter("codigo"));
-                a.setData(request.getParameter("data"));
+                String datahora = request.getParameter("data") + " " + request.getParameter("hora"); 
+                a.setData(datahora);
                 a.setUsuario(user);
                 a.setObservacoes(request.getParameter("observacoes"));
                 a.setDiagnostico(request.getParameter("diagnostico"));
-                a.setData("2023-10-03 12:00:00");
                 a.setSituacao("pendente");
                 a.create();
                 session.setAttribute("msg", "Atendimento adicionado com sucesso!");

@@ -19,7 +19,7 @@
             String email = (String) session.getAttribute("email");
             if(email == null){
                 session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("../index.jsp");
             }else{
                 String msg = (String) session.getAttribute("msg");
                 if(msg != null){
@@ -40,7 +40,7 @@
             <div class="container">
                 <a class="btn btn-outline-dark" href="novoUsuario.jsp">Adicionar um novo usuário</a>
             </div>
-            <div id="loading">Carregando...</div>
+            
             <div class="container fluid" id="table">
                 <table class="table table-borderless table-hover mt-3">
                     <thead class="thead-dark text-md-center">
@@ -69,9 +69,6 @@
                                 out.println("</a>");
                                 out.println("<a class='btn btn-outline-dark' href='../controllers/usuariosController.jsp?funcao=editar&id="+list.get(i).getId()+"'>");
                                 out.println("<img src='../img/editar.png' title='editar setor' width='20px' height='20px'>");
-                                out.println("</a>");
-                                out.println("<a class='btn btn-outline-dark' href='../controllers/usuariosController.jsp?funcao=detalhar&id="+list.get(i).getId()+"'>");
-                                out.println("<img src='../img/informacao.png' title='detalhar setor' width='20px' height='20px'>");
                                 out.println("</a>");
                                 out.println("</td>");
                                 out.println("</tr>");

@@ -79,7 +79,7 @@
                                     out.println("<a class='btn btn-outline-dark' href='../controllers/atendimentosController.jsp?funcao=editar&id="+list.get(i).getId()+"'>");
                                     out.println("<img src='../img/editar.png' title='editar atendimento' width='20px' height='20px'>");
                                     out.println("</a>");
-                                    out.println("<a class='btn btn-outline-dark' href='../controllers/atendimentosController.jsp?funcao=detalhar&id="+list.get(i).getId()+"'>");
+                                    out.println("<a class='btn btn-outline-dark' href='detalheAtendimento.jsp?id="+list.get(i).getId()+"'>");
                                     out.println("<img src='../img/informacao.png' title='detalhar atendimento' width='20px' height='20px'>");
                                     out.println("</a>");
                                     out.println("</td>");

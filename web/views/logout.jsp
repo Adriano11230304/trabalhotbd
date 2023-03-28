@@ -10,6 +10,6 @@
     session.setAttribute("email", null);
     session.setAttribute("senha", null);
     session.setAttribute("msg", "Logout realizado com sucesso!");  
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("../index.jsp");
 
 %>
