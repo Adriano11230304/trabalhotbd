@@ -5,27 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="javascript/script.js"></script>
+<script src="../javascript/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous" async></script>
 <jsp:include page = "header.jsp" />
 <%@ page language="Java" import="model.Setor"%>
 <%@ page language="Java" import="model.Usuario"%>
 <%@ page language="Java" import="java.util.List"%>
-    <%
-            String email = (String) session.getAttribute("email");
-            if(email == null){
-                session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("../index.jsp");
-            }else{
-                String msg = (String) session.getAttribute("msg");
-                if(msg != null){
-                    out.println("<div class='col-md-10'>");
-                    out.println("<h5 class='alert alert-success'>"+msg+"</h5>");
-                    session.setAttribute("msg", null);
-                }
-            
-            }
-     %>
             <div class="col-md-10">
                 <div class="container">
                     <h4 class="m-2">Novo Usuário</h4>

@@ -40,6 +40,9 @@
                 <label>Mostrar Senha</label>
             </div>
             <button class="btn btn-outline-dark" type="submit">Entrar</button>
+             <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="views/novoUsuario.jsp">Cadastre-se</a>
+            </div>
 
         </form>
         

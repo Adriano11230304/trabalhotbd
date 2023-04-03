@@ -13,20 +13,6 @@
 
 <%
         try{
-            String email = (String) session.getAttribute("email");
-            String senha = (String) session.getAttribute("senha");
-            Usuario user = Usuario.getUser(email, senha);
-            if(email == null){
-                session.setAttribute("msg", "Você não tem está logado. Por favor, faça o login!");
-                response.sendRedirect("../index.jsp");
-            }else{
-                String msg = (String) session.getAttribute("msg");
-                if(msg != null){
-                    out.println("<h5 class='alert alert-success'>"+msg+"</h5>");
-                    session.setAttribute("msg", null);
-                }
-            
-            }
             if(request.getParameter("funcao").equals("add")){
                 Usuario useradd = new Usuario();
                 useradd.setNome(request.getParameter("nome"));
@@ -39,17 +25,13 @@
                 
                 useradd.create();
                 session.setAttribute("msg","Usuario adicionado com sucesso!");
-                response.sendRedirect("../views/usuarios.jsp");
+                response.sendRedirect("../index.jsp");
             }
             
             if(request.getParameter("funcao").equals("excluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
                 Usuario userdelete = Usuario.getById(id);
                 List<Atendimento> list = Atendimento.listAllUser(userdelete);
-                if(userdelete.getId() == user.getId()){
-                    session.setAttribute("msg", "Você não pode excluir o seu Usuário!");
-                    response.sendRedirect("../views/usuarios.jsp");
-                }else{
                     if(list.size() > 0){
                         session.setAttribute("msg", "Exclua os atendimentos desse usuário para depois excluir o usuário!");
                         response.sendRedirect("../views/usuarios.jsp");
@@ -58,8 +40,6 @@
                         session.setAttribute("msg", "Usuário excluído com sucesso!");
                         response.sendRedirect("../views/usuarios.jsp");
                     }
-                    
-                }
                     
                 
             }
